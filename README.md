@@ -1,2 +1,2 @@
 # SSW567GitHubAPI
-Working with GitHub API for SSW567
+[![build status of master](https://travis-ci.org/Connorsmith25/SSW567GitHubAPI.svg?branch=master)](https://travis-ci.org/Connorsmith25/SSW567GitHubAPI)

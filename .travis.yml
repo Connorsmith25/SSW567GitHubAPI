@@ -1,7 +1,10 @@
 language: python
 python:
- - "3.5"
+ - "3.8"
 
+install:
+  - pip install requests
+  - pip install json
 # command to run tests
 script:
  - python -m unittest HW05_Amocking

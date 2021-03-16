@@ -8,9 +8,9 @@
 import requests
 
 # Greet user and request user inputted GitHub ID & specific repo name if required
-print("Hi, this program will show the number of commits for given GitHub repos for a GitHub user.")
-user_id = input("Please enter your GitHub ID: ")
-repo_id = input("Please enter your repo name (if you want to see all repos for this user, enter 'NA'): ")
+#print("Hi, this program will show the number of commits for given GitHub repos for a GitHub user.")
+#user_id = input("Please enter your GitHub ID: ")
+#repo_id = input("Please enter your repo name (if you want to see all repos for this user, enter 'NA'): ")
 
 
 # create function to find both repos and number of commits as well as number of repos by using a count function
@@ -41,7 +41,7 @@ def Commits(username, repo_name):
     return len(data)
 
 
-if repo_id == 'NA':
-    github_repos_commits(user_id)
-else:
-    Commits(user_id, repo_id)
+#if repo_id == 'NA':
+    #github_repos_commits(user_id)
+#else:
+    #Commits(user_id, repo_id)

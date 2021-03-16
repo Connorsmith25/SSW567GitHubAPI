@@ -7,29 +7,41 @@
 # import library
 import requests
 
-# request user inputted GitHub ID
+# Greet user and request user inputted GitHub ID & specific repo name if required
+print("Hi, this program will show the number of commits for given GitHub repos for a GitHub user.")
 user_id = input("Please enter your GitHub ID: ")
+repo_id = input("Please enter your repo name (if you want to see all repos for this user, enter 'NA'): ")
 
-# create function to find both repos and number of commits
-def github_repos_commits(user_id):
-    repos = Repos(user_id)
+
+# create function to find both repos and number of commits as well as number of repos by using a count function
+def github_repos_commits(username):
+    repos = Repos(username)
     output = {}
+    count = 0
     for repo in repos:
+        count = count + 1
         repo_name = repo["name"]
-        output[repo_name] = Commits(user_id, repo_name)
-    print(output)
+        output[repo_name] = Commits(username, repo_name)
+    print("Total number of repos for this user:", count)
     return output
 
+
 # create function to find repos
-def Repos(user_id):
-    r = requests.get("https://api.github.com/users/" + user_id + "/repos")
+def Repos(username):
+    r = requests.get("https://api.github.com/users/" + username + "/repos")
     data = r.json()
     return data
 
-# create function to find number of commits per repo
-def Commits(user_id, repo_name):
-    r = requests.get("https://api.github.com/repos/" + user_id + "/" + repo_name + "/commits")
-    data = r.json()
-    return "Number of commits: ", len(data)
 
-github_repos_commits(user_id)
+# create function to find number of commits per repo
+def Commits(username, repo_name):
+    r = requests.get("https://api.github.com/repos/" + username + "/" + repo_name + "/commits")
+    data = r.json()
+    print("Number of commits for",repo_name,":",len(data))
+    return len(data)
+
+
+if repo_id == 'NA':
+    github_repos_commits(user_id)
+else:
+    Commits(user_id, repo_id)
